@@ -1,0 +1,68 @@
+{
+    "login": {
+        "title": "MerchantPay",
+        "subtitle": "Secure Gateway Solutions",
+        "usernameLabel": "Username or Email",
+        "usernamePlaceholder": "Enter your credential",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "••••••••",
+        "forgotPassword": "Forgot Password?",
+        "signInBtn": "Sign In",
+        "footer": "Powered by Oman Pay Network",
+        "errUsername": "Username or email is required.",
+        "errPasswordEmpty": "Password field cannot be empty.",
+        "errPasswordShort": "Password must be at least 4 characters."
+    },
+    "profile": {
+        "title": "Account Settings",
+        "merchantDetails": "Merchant Details",
+        "registeredUsername": "Registered Username",
+        "supportEmail": "Support Email",
+        "contactPhone": "Contact Phone",
+        "systemConfig": "System Configuration",
+        "brandingColor": "Branding Color Palette",
+        "displayLanguage": "Display Language",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "e.g.",
+        "logoutBtn": "Logout",
+        "phoneLabel": "Phone Number",
+        "phonePlaceholder": "e.g. +968 9123 4567",
+        "saveBtn": "Save Changes",
+        "languageLabel": "Display Language",
+        "errEmail": "Please enter a valid email address.",
+        "errPhone": "Please enter a valid phone number."
+    },
+    "dashboard": {
+        "greeting": "Marhaban, 👋",
+        "logout": "Logout",
+        "newInvoice": "New Invoice",
+        "viewAudit": "Transactions",
+        "currencySymbol": "OMR"
+    },
+    "invoiceForm": {
+        "title": "Create New Invoice",
+        "customerLabel": "Customer Name *",
+        "customerPlaceholder": "e.g. Salim Al-Harthy",
+        "descLabel": "Generic Description",
+        "descPlaceholder": "Provide explicit context for this billing link...",
+        "itemsHeader": "Line Items *",
+        "selectProductLabel": "Select Inventory Product",
+        "choosePlaceholder": "-- Choose an item --",
+        "priceLabel": "Unit Price (OMR)",
+        "qtyLabel": "Quantity",
+        "addLineItem": "Add Product Line Item",
+        "subtotal": "Subtotal",
+        "vat": "VAT (5%)",
+        "totalAmount": "Total Amount",
+        "generateCta": "Generate Payment Link",
+        "errCustomer": "Customer name profile validation failed.",
+        "errNoItems": "Please add at least one line product item.",
+        "errDuplicateItem": "This product item has already been selected inside another row line item."
+    },
+    "modal": {
+        "successTitle": "Link Generated Successfully",
+        "toastCopied": "Link copied to clipboard!",
+        "shareCta": "Share Payment Receipt",
+        "savePdfCta": "Save Invoice PDF"
+    }
+}

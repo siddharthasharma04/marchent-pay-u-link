@@ -1,0 +1,68 @@
+{
+  "login": {
+    "title": "ميرشنت باي",
+    "subtitle": "حلول بوابة الدفع الآمنة",
+    "usernameLabel": "اسم المستخدم أو البريد الإلكتروني",
+    "usernamePlaceholder": "أدخل بيانات الاعتماد الخاصة بك",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "signInBtn": "تسجيل الدخول",
+    "footer": "مشغل بواسطة شبكة عمان للدفع",
+    "errUsername": "اسم المستخدم أو البريد الإلكتروني مطلوب.",
+    "errPasswordEmpty": "لا يمكن أن يكون حقل كلمة المرور فارغاً.",
+    "errPasswordShort": "يجب أن تتكون كلمة المرور من 4 أحرف على الأقل."
+  },
+  "profile": {
+    "title": "إعدادات الملف الشخصي",
+    "merchantDetails": "تفاصيل التاجر",
+    "registeredUsername": "اسم المستخدم المسجل",
+    "supportEmail": "البريد الإلكتروني للدعم",
+    "contactPhone": "رقم الهاتف للتواصل",
+    "systemConfig": "إعدادات النظام",
+    "brandingColor": "لوحة ألوان العلامة التجارية",
+    "displayLanguage": "لغة العرض",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "مثال: user@example.com",
+    "logoutBtn": "تسجيل الخروج",
+    "phoneLabel": "رقم الهاتف",
+    "phonePlaceholder": "مثال: +968 9123 4567",
+    "saveBtn": "حفظ التغييرات",
+    "languageLabel": "لغة العرض",
+    "errEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+    "errPhone": "يرجى إدخال رقم هاتف صالح."
+  },
+  "dashboard": {
+    "greeting": "مرحباً، 👋",
+    "logout": "خروج",
+    "newInvoice": "فاتورة جديدة",
+    "viewAudit": "المعاملات",
+    "currencySymbol": "ر.ع."
+  },
+  "invoiceForm": {
+    "title": "إنشاء فاتورة جديدة",
+    "customerLabel": "اسم العميل *",
+    "customerPlaceholder": "مثال: سالم الحارثي",
+    "descLabel": "وصف عام",
+    "descPlaceholder": "قم بتوفير سياق واضح لرابط الدفع هذا...",
+    "itemsHeader": "العناصر المضافة *",
+    "selectProductLabel": "اختر منتج من المخزون",
+    "choosePlaceholder": "-- اختر عنصراً --",
+    "priceLabel": "سعر الوحدة (ر.ع.)",
+    "qtyLabel": "الكمية",
+    "addLineItem": "إضافة عنصر جديد",
+    "subtotal": "المجموع الفرعي",
+    "vat": "ضريبة القيمة المضافة (5٪)",
+    "totalAmount": "المبلغ الإجمالي",
+    "generateCta": "توليد رابط الدفع",
+    "errCustomer": "فشل التحقق من صحة اسم العميل.",
+    "errNoItems": "يرجى إضافة عنصر واحد على الأقل.",
+    "errDuplicateItem": "تم اختيار هذا المنتج بالفعل في سطر آخر."
+  },
+  "modal": {
+    "successTitle": "تم إنشاء الرابط بنجاح",
+    "toastCopied": "تم نسخ الرابط إلى الحافظة!",
+    "shareCta": "مشاركة إيصال الدفع",
+    "savePdfCta": "حفظ الفاتورة بصيغة PDF"
+  }
+}

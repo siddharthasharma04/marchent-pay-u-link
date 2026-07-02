@@ -1,0 +1,1 @@
+export type TTabType = 'home' | 'create' | 'history' | 'profile';
