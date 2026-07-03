@@ -10,6 +10,7 @@ import { useCreateInvoiceStyles, usePickerSelectStyles } from './styles';
 import { ArrowLeft, Plus, Trash2, Link, Copy, Share2, FileText, X } from 'lucide-react-native';
 import { useAppStore } from '../../../store/useAppStore';
 import { useTheme } from '../../../hooks/useTheme';
+import { CurrencyIcon } from '../../../components/atoms/CurrencyIcon';
 
 // Mock inventory item records as if delivered by backend API
 const MOCK_API_PRODUCTS = [
@@ -357,7 +358,7 @@ export default function CreateInvoiceScreen({ onBack }: { onBack: () => void }) 
 
                             <View style={styles.itemInlineGrid}>
                                 <View style={styles.gridCol}>
-                                    <Text style={[styles.label, { marginTop: 6, fontSize: 12 }]}>Unit Price (OMR)</Text>
+                                    <Text style={[styles.label, { marginTop: 6, fontSize: 12 }]}>Unit Price</Text>
                                     <TextInput
                                         style={styles.input}
                                         keyboardType="numeric"
@@ -391,12 +392,18 @@ export default function CreateInvoiceScreen({ onBack }: { onBack: () => void }) 
                 <View style={styles.totalCard}>
                     <View style={styles.totalRow}>
                         <Text style={styles.totalLabel}>Subtotal</Text>
-                        <Text style={styles.totalVal}>{subtotal.toFixed(3)} OMR</Text>
+                        <View style={styles.totalValWrap}>
+                            <Text><CurrencyIcon color={styles.totalVal.color} /></Text>
+                            <Text style={styles.totalVal}>{subtotal.toFixed(3)}</Text>
+                        </View>
                     </View>
 
                     <View style={styles.totalRow}>
                         <Text style={styles.totalLabel}>VAT (5%)</Text>
-                        <Text style={styles.totalVal}>{taxAmount.toFixed(3)} OMR</Text>
+                        <View style={styles.totalValWrap}>
+                            <Text><CurrencyIcon color={styles.totalVal.color} /></Text>
+                            <Text style={styles.totalVal}>{taxAmount.toFixed(3)}</Text>
+                        </View>
                     </View>
 
                     {/* Replacing <hr> with a clean native horizontal separator view */}
@@ -404,7 +411,10 @@ export default function CreateInvoiceScreen({ onBack }: { onBack: () => void }) 
 
                     <View style={styles.totalRow}>
                         <Text style={styles.grandTotalLabel}>Total Amount</Text>
-                        <Text style={styles.grandTotalVal}>{totalAmount.toFixed(3)} OMR</Text>
+                        <View style={styles.grandTotalValWrap}>
+                            <Text><CurrencyIcon color={styles.grandTotalVal.color} size={24} /></Text>
+                            <Text style={styles.grandTotalVal}>{totalAmount.toFixed(3)}</Text>
+                        </View>
                     </View>
                 </View>
 
