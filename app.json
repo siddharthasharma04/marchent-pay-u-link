@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "marchent-pay-u-link",
-    "slug": "marchent-pay-u-link",
+    "slug": "team-endless",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,10 +15,20 @@
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "package": "com.demotest04steam.teamendless"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "71de5a7e-9fa5-4c9e-9c6b-67b65a95887f"
+      }
+    },
+    "experiments": {
+      "baseUrl": "/marchent-pay-u-link"
+    },
+    "owner": "demotest04s-team"
   }
 }

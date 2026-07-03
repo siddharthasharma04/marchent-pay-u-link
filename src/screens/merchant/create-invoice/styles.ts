@@ -70,8 +70,10 @@ export const useCreateInvoiceStyles = () => {
         },
         totalRow: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 4 },
         totalLabel: { fontSize: 14, color: colors.textMuted },
+        totalValWrap: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4 },
         totalVal: { fontSize: 15, fontWeight: '600', color: colors.textMain },
         grandTotalLabel: { fontSize: 16, fontWeight: '700', color: colors.textMain },
+        grandTotalValWrap: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4 },
         grandTotalVal: { fontSize: 20, fontWeight: '800', color: colors.primary },
 
         // Form CTA
