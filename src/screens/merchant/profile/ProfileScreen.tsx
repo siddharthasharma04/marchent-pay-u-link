@@ -4,12 +4,14 @@ import { useProfileStyles } from './styles';
 import { useAppStore, useTranslation } from '../../../store/useAppStore';
 import { ColorThemes } from '../../../constants/theme';
 import { ArrowLeft } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
+import Header from '../../../components/organisms/header/Header';
 
 interface ProfileProps {
     onBack: () => void;
 }
 
-export default function ProfileScreen({ onBack }: ProfileProps) {
+export default function ProfileScreen() {
     const {logout, ...store} = useAppStore();
     const { t, isRTL } = useTranslation();
 
@@ -18,6 +20,7 @@ export default function ProfileScreen({ onBack }: ProfileProps) {
     const [phone, setPhone] = useState(store.phone);
 
     const styles = useProfileStyles();
+    const navigation = useNavigation<any>();
 
     const handleSaveProfile = () => {
         store.updateProfile(email, phone);
@@ -26,13 +29,7 @@ export default function ProfileScreen({ onBack }: ProfileProps) {
     return (
         <View style={styles.container}>
             {/* Header View */}
-            <View style={styles.header}>
-                <TouchableOpacity onPress={onBack}>
-                    <ArrowLeft color={styles.backBtnText.color} />
-                </TouchableOpacity>
-                <Text style={[styles.headerTitle, { textAlign: isRTL ? 'right' : 'left' }]}>{t('profile.title')}</Text>
-                <View style={{ width: 50 }} />
-            </View>
+             {/* <Header title={t('profile.title')}/> */}
 
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
 

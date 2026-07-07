@@ -5,10 +5,13 @@ import InvoiceCard from '../../../components/molecules/invoice-card/InvoiceCard'
 import { TTabType } from '../../../model';
 import { BellDot, User } from 'lucide-react-native';
 import { CurrencyIcon } from '../../../components/atoms/CurrencyIcon';
+import QuickLinks from '../../../components/molecules/quick-links/QuickLinks';
+import { useNavigation } from '@react-navigation/native';
 
-export default function DashboardScreen({ navigateTo }: { navigateTo: (tab: TTabType) => void }) {
+export default function DashboardScreen() {
     const { username, invoices } = useAppStore();
     const { t, isRTL } = useTranslation();
+    const navigation = useNavigation<any>();
 
     const styles = useDashboardStyles();
 
@@ -21,11 +24,16 @@ export default function DashboardScreen({ navigateTo }: { navigateTo: (tab: TTab
         <View style={styles.container}>
             {/* Premium Profile Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigateTo('profile')}>
+                <TouchableOpacity onPress={() => navigation.navigate('profile')}>
                     <Text style={styles.userIcon}>
                         <User size={18} />
                     </Text>
                 </TouchableOpacity>
+                <View style={styles.brandWrapper}>
+                    <Text style={styles.brandName}>
+                        Qafeer
+                    </Text>
+                </View>
                 <TouchableOpacity>
                     <BellDot size={20} color={styles.userIcon.color} />
                 </TouchableOpacity>
@@ -34,7 +42,7 @@ export default function DashboardScreen({ navigateTo }: { navigateTo: (tab: TTab
             <ScrollView contentContainerStyle={styles.scrollBody} showsVerticalScrollIndicator={false}>
                 <View style={{ marginBottom: 20, display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                     <Text style={styles.welcomeText}>Marhaban </Text>
-                    <Text style={styles.usernameText}>{username || 'Merchant'}</Text>
+                    <Text style={styles.usernameText}>{username || 'Merchant'}!</Text>
                 </View>
                 {/* Metric Balance Card (Omani Theme Layout) */}
                 <View style={styles.metricCard}>
@@ -46,13 +54,16 @@ export default function DashboardScreen({ navigateTo }: { navigateTo: (tab: TTab
                     <View style={styles.goldBar} />
                 </View>
 
+                {/* Metrics Section */}
+                <QuickLinks navigateTo={navigation.navigate} />
+
                 {/* Recent Transactions List */}
                 <View style={styles.sectionWrapper}>
                     <Text style={styles.sectionTitle}>
                         Recent Invoices
                         <Text style={styles.sectionSubtitle}> (Latest 5)</Text>
                     </Text>
-                    <TouchableOpacity onPress={() => navigateTo('history')} style={styles.viewAllButton}>
+                    <TouchableOpacity onPress={() => navigation.navigate('history')} style={styles.viewAllButton}>
                         <Text style={styles.viewAllButtonText}>View All</Text>
                     </TouchableOpacity>
                 </View>

@@ -27,6 +27,8 @@ export const useDashboardStyles = () => {
             padding: 5
 
          },
+         brandWrapper: {borderRadius: borderRadius.md, backgroundColor: colors.primary, paddingHorizontal: spacing.md, paddingVertical: spacing.xs},
+         brandName: {fontSize:18, fontWeight: '500', color: colors.textSecondary},
         welcomeText: { fontSize: 14, color: colors.textMuted },
         usernameText: { fontSize: 16, fontWeight: '700', color: colors.textMain },
         logoutBtn: { padding: spacing.sm },

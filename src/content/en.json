@@ -1,14 +1,14 @@
 {
     "login": {
-        "title": "MerchantPay",
-        "subtitle": "Secure Gateway Solutions",
+        "title": "Qafeer Pay",
+        "subtitle": "Omani Merchant Solutions",
+        "footer": "Powered by Qafeer Payment Network",
         "usernameLabel": "Username or Email",
         "usernamePlaceholder": "Enter your credential",
         "passwordLabel": "Password",
         "passwordPlaceholder": "••••••••",
         "forgotPassword": "Forgot Password?",
         "signInBtn": "Sign In",
-        "footer": "Powered by Oman Pay Network",
         "errUsername": "Username or email is required.",
         "errPasswordEmpty": "Password field cannot be empty.",
         "errPasswordShort": "Password must be at least 4 characters."

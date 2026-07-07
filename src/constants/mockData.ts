@@ -1,4 +1,4 @@
-import { TInvoice } from "../model";
+import { THalLoan, TInvoice } from "../model";
 
 export const MOCK_INVOICES: TInvoice[] = [
     { id: 'INV-8831', customerName: 'Ahmed Al-Balushi', amount: 45.500, description: 'Web Consulting Services', status: 'Paid', createdAt: '2026-07-01' },
@@ -14,3 +14,9 @@ export const MOCK_INVOICES: TInvoice[] = [
     { id: 'INV-8841', customerName: 'Yousef Al-Maawali', amount: 80.000, description: 'Website Maintenance', status: 'Paid', createdAt: '2026-06-22' },
     { id: 'INV-8842', customerName: 'Mariam Al-Kharusi', amount: 25.000, description: 'Logo Design Services', status: 'Failed', createdAt: '2026-06-21' }
 ];
+
+export const MOCK_HAL_DATA: THalLoan[] = [
+    { id: 'HAL-LN-4091', loanAmount: 25000, pendingTenure: '18 Months', status: 'Active', interestRate: '4.5%', nextInstallmentDate: '2026-08-01' },
+    { id: 'HAL-LN-8821', loanAmount: 5000, pendingTenure: '4 Months', status: 'Active', interestRate: '3.9%', nextInstallmentDate: '2026-07-25' },
+    { id: 'HAL-LN-1034', loanAmount: 60000, pendingTenure: '0 Months', status: 'Settled', interestRate: '4.2%', nextInstallmentDate: 'N/A' },
+  ];

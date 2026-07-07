@@ -28,7 +28,8 @@ export const useCreateInvoiceStyles = () => {
             borderRadius: borderRadius.md,
             padding: spacing.sm + 4,
             fontSize: 15,
-            color: colors.textMain
+            color: colors.textMain,
+            borderColor: colors.border
         },
         errorText: { color: colors.error, fontSize: 12, marginTop: 4, fontWeight: '500' },
 

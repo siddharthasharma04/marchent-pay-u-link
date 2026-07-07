@@ -51,11 +51,12 @@ export default function LoginScreen() {
 
                 {/* Logo & Header Branding */}
                 <View style={styles.headerSection}>
+                    <View style={styles.dummy}></View>
                     <View style={styles.logoMock}>
-                        <Text style={styles.logoText}>🇴🇲</Text>
+                        <Text style={styles.logoText}>Q</Text>
                     </View>
-                    <Text style={styles.appName}>MerchantPay</Text>
-                    <Text style={styles.appSubtitle}>Secure Gateway Solutions</Text>
+                    <Text style={styles.appName}>Qafeer</Text>
+                    <Text style={styles.appSubtitle}>Merchant Pay Solutions</Text>
                 </View>
 
                 {/* Form Controls */}
@@ -119,7 +120,7 @@ export default function LoginScreen() {
 
                 {/* Footer Branding */}
                 <View style={styles.footerSection}>
-                    <Text style={styles.footerText}>Powered by Oman Pay Network</Text>
+                    <Text style={styles.footerText}>Powered by Qafeer Payment Network</Text>
                     <View style={styles.goldDivider} />
                 </View>
 

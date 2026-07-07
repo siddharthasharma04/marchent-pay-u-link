@@ -1,21 +1,24 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native';
-import { Home, PlusCircle, ClipboardList, User } from 'lucide-react-native';
+import { Home, PlusCircle, ClipboardList, User, Zap } from 'lucide-react-native';
 import { useTheme } from '../../../hooks/useTheme';
 import { TTabType } from '../../../model';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 interface BottomTabsProps {
   currentTab: TTabType;
-  onTabSelect: (tab: TTabType) => void;
+  onTabSelect?: (tab: TTabType) => void;
 }
 
-export default function BottomTabs({ currentTab, onTabSelect }: BottomTabsProps) {
-  const { colors, borderRadius } = useTheme();
+export default function BottomTabs({currentTab}: BottomTabsProps) {
+  const { colors } = useTheme();
+  const navigation = useNavigation<any>();
 
   const tabs = [
     { id: 'home' as TTabType, label: 'Home', Icon: Home },
+    { id: 'quick-pay' as TTabType, label: 'Quick Pay', Icon: Zap },
     { id: 'create' as TTabType, label: 'Add Invoice', Icon: PlusCircle },
     { id: 'history' as TTabType, label: 'Transactions', Icon: ClipboardList },
     { id: 'profile' as TTabType, label: 'Profile', Icon: User },
@@ -33,7 +36,7 @@ export default function BottomTabs({ currentTab, onTabSelect }: BottomTabsProps)
           <TouchableOpacity
             key={tab.id}
             style={styles.tabButton}
-            onPress={() => onTabSelect(tab.id)}
+            onPress={() => navigation.navigate(tab.id)}
             activeOpacity={0.7}
           >
             <IconComponent 

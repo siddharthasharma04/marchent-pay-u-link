@@ -11,6 +11,7 @@ import { ArrowLeft, Plus, Trash2, Link, Copy, Share2, FileText, X } from 'lucide
 import { useAppStore } from '../../../store/useAppStore';
 import { useTheme } from '../../../hooks/useTheme';
 import { CurrencyIcon } from '../../../components/atoms/CurrencyIcon';
+import { useNavigation } from '@react-navigation/native';
 
 // Mock inventory item records as if delivered by backend API
 const MOCK_API_PRODUCTS = [
@@ -26,9 +27,10 @@ interface SelectedItemLine {
     quantity: number;
 }
 
-export default function CreateInvoiceScreen({ onBack }: { onBack: () => void }) {
+export default function CreateInvoiceScreen() {
     const { colors, borderRadius } = useTheme();
     const addInvoice = useAppStore((state) => state.addInvoice);
+    const navigation = useNavigation<any>();
 
     const styles = useCreateInvoiceStyles();
     const pStyles = usePickerSelectStyles();
@@ -271,14 +273,6 @@ export default function CreateInvoiceScreen({ onBack }: { onBack: () => void }) 
 
     return (
         <View style={styles.container}>
-            {/* Top Header Layer */}
-            <View style={styles.header}>
-                <TouchableOpacity onPress={onBack}>
-                    <ArrowLeft color={colors.textMain} size={22} />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Create New Invoice</Text>
-                <View style={{ width: 22 }} />
-            </View>
 
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 {/* Customer Input */}

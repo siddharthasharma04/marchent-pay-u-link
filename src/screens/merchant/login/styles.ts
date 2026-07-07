@@ -12,13 +12,14 @@ export const useLoginStyles = () => {
       flex: 1,
       padding: spacing.xl,
       justifyContent: 'space-between',
-       paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + spacing.md : spacing.md,
+       paddingTop: Platform.OS === 'android' ? (StatusBar as any).currentHeight + spacing.md : spacing.md,
     },
     headerSection: {
       alignItems: 'center',
       marginTop: spacing.xl,
      
     },
+    dummy: {padding: spacing.xl},
     logoMock: {
       width: 70,
       height: 70,
@@ -30,6 +31,7 @@ export const useLoginStyles = () => {
     },
     logoText: {
       fontSize: 32,
+      color: colors.textSecondary
     },
     appName: {
       fontSize: 28,
@@ -42,7 +44,9 @@ export const useLoginStyles = () => {
       marginTop: spacing.xs,
     },
     formSection: {
-      marginVertical: spacing.xl,
+      // marginVertical: spacing.xl,
+      marginTop: -90
+
     },
     inputLabel: {
       fontSize: 14,

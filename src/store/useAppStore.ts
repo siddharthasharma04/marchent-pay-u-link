@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { MOCK_INVOICES } from '../constants/mockData';
-import { TColorPallette, TInvoice } from '../model';
+import { MOCK_HAL_DATA, MOCK_INVOICES } from '../constants/mockData';
+import { TColorPallette, THalLoan, TInvoice, TQuickPayLink } from '../model';
 import { ColorThemes } from '../constants/theme';
 import en from '../content/en.json';
 import ar from '../content/ar.json';
@@ -12,6 +12,8 @@ interface AppState {
     username: string | null;
     email: string;
     phone: string;
+    halLoans: THalLoan[];
+    quickPayLinks: TQuickPayLink[];
     invoices: TInvoice[];
     activeTheme: TColorPallette;
     language: LanguageType;
@@ -19,6 +21,7 @@ interface AppState {
     login: (username: string) => void;
     logout: () => void;
     addInvoice: (customerName: string, amount: number, description: string) => string;
+    addQuickPayLink: (data: Omit<TQuickPayLink, 'id' | 'finalAmount' | 'gatewayUrl' | 'createdAt'>) => string;
     updateProfile: (email: string, phone: string) => void;
     setAppTheme: (theme: TColorPallette) => void;
 }
@@ -31,9 +34,12 @@ export const useAppStore = create<AppState>((set) => ({
     phone: '+968 9123 4567',
     language: 'en',
     activeTheme: ColorThemes.CLASSIC_BLUE,
+    halLoans: MOCK_HAL_DATA,
+    quickPayLinks: [],
 
     login: (username) => set({ isAuthenticated: true, username }),
     logout: () => set({ isAuthenticated: false, username: null }),
+    
     addInvoice: (customerName, amount, description) => {
         const generatedId = `INV-${Math.floor(1000 + Math.random() * 9000)}`;
         const newInvoice: TInvoice = {
@@ -51,6 +57,23 @@ export const useAppStore = create<AppState>((set) => ({
 
         return generatedId;
     },
+    addQuickPayLink: (payload) => {
+    const generatedId = `LNK-${Math.floor(1000 + Math.random() * 9000)}`;
+    const finalAmount = Math.max(0, payload.amount - payload.discount);
+    // Simulate payment gateway tracking token url allocation
+    const gatewayUrl = `https://pay.qafeer.om/checkout/${generatedId}`;
+    
+    const newLink: TQuickPayLink = {
+      ...payload,
+      id: generatedId,
+      finalAmount,
+      gatewayUrl,
+      createdAt: new Date().toISOString().split('T')[0],
+    };
+
+    set((state) => ({ quickPayLinks: [newLink, ...state.quickPayLinks] }));
+    return gatewayUrl;
+  },
     updateProfile: (email: string, phone: string) => set({ email, phone }),
     setLanguage: (language: LanguageType) => set({ language }),
     setAppTheme: (activeTheme: TColorPallette) => set({ activeTheme }),

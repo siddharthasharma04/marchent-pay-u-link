@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, SafeAreaView, Platform } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import { useTheme } from '../../hooks/useTheme';
 import { TTabType, TTheme } from '../../model';
 import DashboardScreen from './dashboard/DashboardScreen';
@@ -7,37 +7,64 @@ import CreateInvoiceScreen from './create-invoice/CreateInvoiceScreen';
 import TransactionHistoryScreen from './transaction-history/TransactionHistoryScreen';
 import ProfileScreen from './profile/ProfileScreen';
 import BottomTabs from '../../components/organisms/nav-bar/BottomTabs';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
+import QuickPayScreen from './quick-pay/QuickPayScreen';
+import HalRegistryScreen from './hal-registry/HalRegistryScreen';
+
+const Stack = createStackNavigator();
+const navigationRef = createNavigationContainerRef<any>();
 
 export default function AppShell() {
     const theme = useTheme();
     const styles = getAppShellStyles(theme);
-    const [activeTab, setActiveTab] = useState<TTabType>('home');
+    // const [activeTab, setActiveTab] = useState<TTabType>('home');
+    // const navigation = useNavigation<any>();
+    const [activeTab, setActiveTab] = useState<string>('home');
 
-    // Choose the viewport content dynamically based on current selected tab ID
-    const renderContent = () => {
-        switch (activeTab) {
-            case 'home':
-                return <DashboardScreen navigateTo={setActiveTab} />;
-            case 'create':
-                return <CreateInvoiceScreen onBack={() => setActiveTab('home')} />;
-            case 'history':
-                return <TransactionHistoryScreen onBack={() => setActiveTab('home')} />;
-            case 'profile':
-                return <ProfileScreen onBack={() => setActiveTab('home')} />;
-            default:
-                return <DashboardScreen navigateTo={setActiveTab} />;
-        }
-    };
+    const stateChange = (state: any) => {
+        if (!state) return;
+        // Grab the current active route name natively from the root state tree
+        const currentRouteName = state.routes[state.index].name;
+        setActiveTab(currentRouteName.toLowerCase());
+    }
+
     return (
-        <View style={styles.rootContainer}>
-            {/* Dynamic Content Window */}
-            <View style={styles.viewPort}>
-                {renderContent()}
-            </View>
+        <NavigationContainer ref={navigationRef} onStateChange={stateChange}>
+            <View style={styles.rootContainer}>
+                {/* Dynamic Content Window */}
+                <View style={styles.viewPort}>
+                    <Stack.Navigator
+                        initialRouteName="home"
+                        screenListeners={{
+                            state: (e) => {
+                                console.log(e)
+                            }
+                        }}
+                        screenOptions={{
+                            // headerShown: false,
+                            headerBackgroundContainerStyle: { backgroundColor: theme.colors.background },
+                            gestureEnabled: true,
+                            detachPreviousScreen: false,
+                            gestureDirection: 'horizontal',
+                            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 
-            {/* Persistent Bottom Controls matching image_6d3bdf.png */}
-            <BottomTabs currentTab={activeTab} onTabSelect={setActiveTab} />
-        </View>
+
+                        }} // Hides default header to match your original clean layout
+                    >
+                        <Stack.Screen name="home" component={DashboardScreen} options={{ header: () => false, animation: 'fade' }} />
+                        <Stack.Screen name="create" component={CreateInvoiceScreen} options={{ title: 'Add Invoice', }} />
+                        <Stack.Screen name="history" component={TransactionHistoryScreen} options={{ title: 'Transactions' }} />
+                        <Stack.Screen name="profile" component={ProfileScreen} options={{ title: 'Account Setting' }} />
+                        <Stack.Screen name="quick-pay" component={QuickPayScreen} options={{ title: 'Quick Pay' }} />
+                        <Stack.Screen name="hal-registry" component={HalRegistryScreen} options={{ title: 'HAL Financing Hub' }} />
+                    </Stack.Navigator>
+                </View>
+
+                {/* Persistent Bottom Controls matching image_6d3bdf.png */}
+                <BottomTabs currentTab={activeTab as TTabType} />
+            </View>
+        </NavigationContainer>
     );
 }
 
